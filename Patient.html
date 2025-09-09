@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AyurSutra - Patient Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-green-700 text-white p-4 flex justify-between items-center shadow-md">
+    <h1 class="text-2xl font-bold">Patient Dashboard</h1>
+    <a href="index.html" class="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600">Logout</a>
+  </header>
+
+  <!-- Main -->
+  <main class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <!-- Profile & Medical History -->
+    <div class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-user-circle mr-2 text-indigo-600"></i>Profile & Medical History</h2>
+      <p><b>Name:</b> Ramesh Kumar</p>
+      <p><b>Age:</b> 42</p>
+      <p><b>Allergies:</b> None</p>
+      <p><b>Conditions:</b> Diabetes, Back Pain</p>
+    </div>
+
+    <!-- Appointments -->
+    <div class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-calendar-alt mr-2 text-green-600"></i>Appointments</h2>
+      <ul class="list-disc pl-5 text-gray-700">
+        <li>Shirodhara – 12 Sept, 10:00 AM</li>
+        <li>Nasya – 15 Sept, 11:30 AM</li>
+      </ul>
+      <button class="mt-3 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Book Appointment</button>
+    </div>
+
+    <!-- Therapy Progress -->
+    <div class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-spa mr-2 text-purple-600"></i>Therapy Progress</h2>
+      <p>3 of 7 therapies completed</p>
+      <div class="w-full bg-gray-200 rounded-full h-4 mt-2">
+        <div class="bg-purple-600 h-4 rounded-full" style="width: 45%"></div>
+      </div>
+    </div>
+
+    <!-- Prescriptions & Medicines -->
+    <div class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-pills mr-2 text-orange-600"></i>Prescriptions</h2>
+      <ul class="list-disc pl-5 text-gray-700">
+        <li>Triphala Churna – 1 tsp after dinner</li>
+        <li>Ashwagandha Tablets – Morning</li>
+      </ul>
+      <button class="mt-3 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">Download Prescription</button>
+    </div>
+
+    <!-- Reports -->
+    <div class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-file-medical mr-2 text-blue-600"></i>Health Reports</h2>
+      <p class="text-gray-700">Last report uploaded: <b>5 Sept 2025</b></p>
+      <button class="mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Download Report</button>
+    </div>
+
+    <!-- Reminders -->
+    <div class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-bell mr-2 text-red-600"></i>Reminders</h2>
+      <ul class="list-disc pl-5 text-gray-700">
+        <li>Take Ashwagandha after breakfast</li>
+        <li>Yoga session tomorrow 7 AM</li>
+        <li>Drink herbal tea at night</li>
+      </ul>
+    </div>
+
+    <!-- Billing & Payments -->
+    <div class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-wallet mr-2 text-teal-600"></i>Billing & Payments</h2>
+      <p class="text-gray-700">Pending: <b>₹1500</b></p>
+      <button class="mt-3 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700">Pay Now</button>
+    </div>
+
+    <!-- Communication with Doctor -->
+    <div class="bg-white shadow rounded-xl p-6 col-span-1 md:col-span-2">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-comments mr-2 text-indigo-600"></i>Chat with Doctor</h2>
+      <div id="chatBox" class="border p-4 h-40 overflow-y-auto bg-gray-50 rounded"></div>
+<div class="flex mt-3">
+  <input id="chatInput" type="text" placeholder="Type a message..." class="flex-1 border rounded-l-lg px-3 py-2">
+  <button id="sendBtn" class="bg-indigo-600 text-white px-4 rounded-r-lg hover:bg-indigo-700">Send</button>
+</div>
+
+    </div>
+
+    <!-- Feedback -->
+    <div class="bg-white shadow rounded-xl p-6 col-span-1 md:col-span-2">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-star mr-2 text-yellow-500"></i>Feedback</h2>
+      <textarea placeholder="Write your feedback..." class="w-full border rounded-lg p-3"></textarea>
+      <button class="mt-3 bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600">Submit</button>
+    </div>
+
+    <!-- Wellness Resources -->
+    <div class="bg-white shadow rounded-xl p-6 col-span-1 md:col-span-3">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-leaf mr-2 text-green-600"></i>Wellness Resources</h2>
+      <ul class="list-disc pl-5 text-gray-700">
+        <li>Article: Benefits of Panchakarma</li>
+        <li>Yoga video for stress relief</li>
+        <li>Diet chart for diabetic patients</li>
+      </ul>
+    </div>
+
+  </main>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script>
+  const myId = "patient123";     // TODO: replace with logged-in patient _id
+  const doctorId = "doctor789";  // TODO: replace with actual doctor _id
+  const chatRoomId = `${myId}-${doctorId}`;
+
+  // Connect to backend server
+  const socket = io('http://localhost:5000'); 
+
+  // Join room
+  socket.emit('joinRoom', { roomId: chatRoomId });
+
+  // Send message when clicking "Send"
+  document.querySelector("button").addEventListener("click", () => {
+    const input = document.querySelector("input");
+    const message = input.value;
+    socket.emit("sendMessage", { 
+      roomId: chatRoomId, 
+      from: myId, 
+      to: doctorId, 
+      content: message 
+    });
+    input.value = "";
+  });
+
+  // Listen for new messages
+  socket.on("receiveMessage", (msg) => {
+    const chatBox = document.querySelector(".chat-box");
+    const p = document.createElement("p");
+    p.textContent = `${msg.from}: ${msg.content}`;
+    chatBox.appendChild(p);
+  });
+</script>
+
+</body>
+</html>

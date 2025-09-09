@@ -1,25 +1,13 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
-
-const auth = async (req, res, next) => {
-  // Get token from header
-  const token = req.header('x-auth-token');
-
-  // Check if not token
-  if (!token) {
-    return res.status(401).json({ msg: 'No token, authorization denied' });
-  }
-
+module.exports = (req, res, next) => {
+  const header = req.headers.authorization;
+  if (!header) return res.status(401).json({ msg: 'No token' });
+  const token = header.split(' ')[1];
   try {
-    // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    // Add user from payload
-    req.user = await User.findById(decoded.user.id).select('-password');
+    req.user = decoded; // { id, role }
     next();
   } catch (err) {
-    res.status(401).json({ msg: 'Token is not valid' });
+    return res.status(401).json({ msg: 'Invalid token' });
   }
 };
-
-module.exports = auth;

@@ -1,3 +1,16 @@
+// Call backend API from frontend
+fetch("http://localhost:5000/api/patients")
+  .then(response => response.json())
+  .then(data => {
+    console.log("Patients:", data);
+
+    // Example: render into HTML
+    const list = document.getElementById("patients-list");
+    list.innerHTML = data.map(p => `<li>${p.name}</li>`).join("");
+  })
+  .catch(err => console.error("Error:", err));
+
+
 // Show/Hide sections
 function showSection(sectionId) {
     const sections = document.querySelectorAll('.content-section');
